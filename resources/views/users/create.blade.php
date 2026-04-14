@@ -10,8 +10,8 @@
     </a>
 </div>
 
-<div class="card shadow-sm">
-    <div class="card-body">
+<div class="card border-0 shadow-sm rounded-4">
+    <div class="card-body p-4">
         <form action="{{ route('users.store') }}" method="POST">
             @csrf
 
@@ -60,9 +60,9 @@
                 </div>
             </div>
 
-            <div class="mt-4">
-                <button type="submit" class="btn btn-primary">
-                    <i class="bi bi-save"></i> Enregistrer
+            <div class="mt-4 d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary button-soft shadow-sm">
+                    <i class="bi bi-save me-2"></i> Enregistrer
                 </button>
             </div>
         </form>

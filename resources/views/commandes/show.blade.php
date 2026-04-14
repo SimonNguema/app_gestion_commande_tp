@@ -52,7 +52,7 @@
 
             @if($commande->produit)
             <dt class="col-sm-3">Montant total</dt>
-            <dd class="col-sm-9">{{ number_format($commande->quantite * $commande->produit->prix, 0, ',', ' ') }} DA</dd>
+            <dd class="col-sm-9">{{ number_format($commande->quantite * $commande->produit->prix, 0, ',', ' ') }} FCFA</dd>
             @endif
 
             <dt class="col-sm-3">Créée le</dt>

@@ -17,8 +17,7 @@ class CommandeController extends Controller
     public function index()
     {
         // with(['produit', 'user']) évite le problème N+1 (une requête au lieu de N)
-        $commandes = Commande::with(['produit', 'user'])->get();
-
+        $commandes = Commande::with(['produit', 'user'])->paginate(10);
         return view('commandes.index', compact('commandes'));
     }
 

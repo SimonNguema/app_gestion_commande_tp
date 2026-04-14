@@ -10,8 +10,8 @@
     </a>
 </div>
 
-<div class="card shadow-sm">
-    <div class="card-body">
+<div class="card border-0 shadow-sm rounded-4">
+    <div class="card-body p-4">
         <form action="{{ route('produits.update', $produit->id) }}" method="POST">
             @csrf
             @method('PUT')
@@ -47,15 +47,16 @@
 
                 <div class="col-md-6">
                     <label class="form-label">Stock</label>
+                    <!-- Champ stock : quantité de produit disponible en inventaire, ne peut pas être négative -->
                     <input type="number" name="stock" value="{{ old('stock', $produit->stock) }}" min="0"
                            class="form-control @error('stock') is-invalid @enderror" required>
                     @error('stock')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
             </div>
 
-            <div class="mt-4">
-                <button type="submit" class="btn btn-warning">
-                    <i class="bi bi-save"></i> Mettre à jour
+            <div class="mt-4 d-flex justify-content-end">
+                <button type="submit" class="btn btn-warning button-soft shadow-sm">
+                    <i class="bi bi-save me-2"></i> Mettre à jour
                 </button>
             </div>
         </form>

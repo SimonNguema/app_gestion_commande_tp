@@ -8,13 +8,11 @@ use Illuminate\Http\Request;
 class ProduitController extends Controller
 {
     // -------------------------------------------------------
-    // index() → Afficher la liste des produits
     // URL : GET /produits
-    // -------------------------------------------------------
+
     public function index()
     {
-        $produits = Produit::all();
-
+        $produits = Produit::paginate(10);
         return view('produits.index', compact('produits'));
     }
 
@@ -34,15 +32,18 @@ class ProduitController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'reference'   => 'required|string|max:100|unique:produits,reference',
             'nom_produit' => 'required|string|max:255',
             'description' => 'required|string',
             'prix'        => 'required|integer|min:0',
             'stock'       => 'required|integer|min:0',
         ]);
 
+        $lastProduit = Produit::latest('id')->first();
+        $nextNumber = $lastProduit ? $lastProduit->id + 1 : 1;
+        $reference = 'PRD-' . str_pad($nextNumber, 3, '0', STR_PAD_LEFT);
+
         Produit::create([
-            'reference'   => $request->reference,
+            'reference'   => $reference,
             'nom_produit' => $request->nom_produit,
             'description' => $request->description,
             'prix'        => $request->prix,

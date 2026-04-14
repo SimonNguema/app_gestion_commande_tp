@@ -10,19 +10,12 @@
     </a>
 </div>
 
-<div class="card shadow-sm">
-    <div class="card-body">
+<div class="card border-0 shadow-sm rounded-4">
+    <div class="card-body p-4">
         <form action="{{ route('produits.store') }}" method="POST">
             @csrf
 
             <div class="row g-3">
-                <div class="col-md-6">
-                    <label class="form-label">Référence</label>
-                    <input type="text" name="reference" value="{{ old('reference') }}"
-                           class="form-control @error('reference') is-invalid @enderror" required>
-                    @error('reference')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                </div>
-
                 <div class="col-md-6">
                     <label class="form-label">Nom du produit</label>
                     <input type="text" name="nom_produit" value="{{ old('nom_produit') }}"
@@ -52,9 +45,9 @@
                 </div>
             </div>
 
-            <div class="mt-4">
-                <button type="submit" class="btn btn-primary">
-                    <i class="bi bi-save"></i> Enregistrer
+            <div class="mt-4 d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary button-soft shadow-sm">
+                    <i class="bi bi-save me-2"></i> Enregistrer
                 </button>
             </div>
         </form>
